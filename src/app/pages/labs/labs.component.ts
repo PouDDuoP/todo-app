@@ -18,5 +18,13 @@ export class LabsComponent {
     'Crear Componentes'
   ];
   name = 'Kevin';
-  age = 25;
+  age = 888;
+  disabled = true;
+  img = 'https://i.imgur.com/QkIa5tT.jpeg';
+
+  person = {
+    name: 'kevin',
+    age: 888,
+    avatar: 'https://i.imgur.com/QkIa5tT.jpeg'
+  }
 }

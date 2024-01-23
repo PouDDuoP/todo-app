@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
@@ -17,7 +17,7 @@ export class LabsComponent {
     'Crear Proyecto',
     'Crear Componentes'
   ];
-  name = 'Kevin';
+  name = signal('Kevin');
   age = 888;
   disabled = true;
   img = 'https://i.imgur.com/QkIa5tT.jpeg';
@@ -33,7 +33,10 @@ export class LabsComponent {
   }
 
   changeHandler(event: Event) {
-    console.log(event);
+    const input = event.target as HTMLInputElement
+    const newValue = input.value;
+    this.name.set(newValue)
+    // console.log(event);
   }
 
   keydownHandler(event: KeyboardEvent) {

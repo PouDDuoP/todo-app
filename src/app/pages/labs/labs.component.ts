@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-labs',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './labs.component.html',
+  styleUrl: './labs.component.css'
 })
-export class AppComponent {
-  title = 'todo-app';
+export class LabsComponent {
   welcome = 'Hola';
   tasks = [
     'Insertar el Angular CLI',

@@ -27,4 +27,12 @@ export class LabsComponent {
     age: 888,
     avatar: 'https://i.imgur.com/QkIa5tT.jpeg'
   }
+
+  clickHandler() {
+    alert('hola');
+  }
+
+  changeHandler(event: Event) {
+    console.log(event)
+  }
 }

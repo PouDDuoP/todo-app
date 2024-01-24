@@ -36,7 +36,7 @@
   <hr>
   <ul>
     <p>total: {{ tasks().length }}</p>
-    <li *ngFor="let task of tasks(); index as i" >
+    <li *ngFor="let task of tasks(); index as i;" >
       {{ task }}
     </li>
   </ul>
@@ -47,4 +47,11 @@
   <br>
   <input type="text" [value]="name()" id="" (keydown)="changeHandler($event)">
   <p>name: {{ name() }}</p>
+  <hr>
+  <div *ngIf=" 1 !== 1">
+    contend
+  </div>
+  <div *ngIf="name() === 'kevin'">
+    El nombre es {{ name() }}
+  </div>
 </div>

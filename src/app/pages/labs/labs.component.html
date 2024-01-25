@@ -71,4 +71,6 @@
     <div *ngSwitchCase="'tu padre'">Yo soy tu padre</div>
     <div *ngSwitchDefault>Yo ya estoy</div>
   </div>
+  <input type="color" [formControl]="colorCtrl">
+  <p>color: {{ colorCtrl.value }}</p>
 </div>

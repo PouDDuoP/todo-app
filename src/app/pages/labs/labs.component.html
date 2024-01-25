@@ -17,22 +17,22 @@
   <button [disabled]="disabled">Click me</button>
   <hr>
   <p>
-    person: {{ person.name }}
+    person: {{ person().name }}
   </p>
-  <img [src]="person.avatar" alt="">
-  <input type="text" [value]="person.name" id="">
+  <img [src]="person().avatar" alt="">
+  <input type="text" [value]="person().name" id="">
   <hr>
   <button (click)="clickHandler()">Click me</button>
   <br>
   <button (dblclick)="clickHandler()">Double click me</button>
   <p>(change)</p>
-  <input type="number" [value]="person.age" id="" (change)="changeHandler($event)">
+  <input type="number" [value]="person().age" id="" (change)="changeHandler($event)">
   <p>(change)</p>
-  <input type="text" [value]="person.name" id="" (change)="changeHandler($event)">
+  <input type="text" [value]="person().name" id="" (change)="changeHandler($event)">
   <p>(keydown)</p>
-  <input type="text" [value]="person.name" id="" (keydown)="keydownHandler($event)">
+  <input type="text" [value]="person().name" id="" (keydown)="keydownHandler($event)">
   <p>(keydown shift + t) especificando la tecla o conjunto de teclas</p>
-  <input type="text" [value]="person.name" id="" (keydown.shift.t)="clickHandler()">
+  <input type="text" [value]="person().name" id="" (keydown.shift.t)="clickHandler()">
   <hr>
   <ul>
     <p>total: {{ tasks().length }}</p>
@@ -51,7 +51,15 @@
   <div *ngIf=" 1 !== 1">
     contend
   </div>
-  <div *ngIf="name() === 'kevin'">
-    El nombre es {{ name() }}
+  <div *ngIf="name() === 'Kevin'">
+    El nombre es al utilizar *ngIf {{ name() }}
   </div>
+  <p>(change)</p>
+  <input type="number" [value]="person().age" id="" (change)="changeAge($event)">
+  <div *ngIf="person().name === 'kevin' && person().age > 16; else elseBlock;">
+    Utilizado *ngIf en un objeto person donde el nombre es person().name y es mayor de 16
+  </div>
+  <ng-template #elseBlock>
+    Soy kevin y soy menor de 18
+  </ng-template>
 </div>

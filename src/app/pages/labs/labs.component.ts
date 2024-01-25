@@ -22,11 +22,11 @@ export class LabsComponent {
   disabled = true;
   img = 'https://i.imgur.com/QkIa5tT.jpeg';
 
-  person = {
+  person = signal({
     name: 'kevin',
     age: 888,
     avatar: 'https://i.imgur.com/QkIa5tT.jpeg'
-  }
+  });
 
   clickHandler() {
     alert('hola');
@@ -42,5 +42,17 @@ export class LabsComponent {
   keydownHandler(event: KeyboardEvent) {
     const input = event.target as HTMLInputElement;
     console.log(input.value);
+  }
+
+  changeAge(event: Event) {
+    const input = event.target as HTMLInputElement
+    const newValue = input.value;
+    this.person.update(prevState => {
+      return {
+        ...prevState,
+        age: parseInt(newValue, 10)
+      }
+    })
+    // console.log(event);
   }
 }

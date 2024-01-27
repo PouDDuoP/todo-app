@@ -30,6 +30,12 @@ export class LabsComponent {
   });
 
   colorCtrl = new FormControl();
+  widthCtrl = new FormControl(50, {
+    nonNullable: true,
+  });
+  heightCtrl = new FormControl(50, {
+    nonNullable: true,
+  });
 
   constructor() {
     this.colorCtrl.valueChanges.subscribe(console.log);

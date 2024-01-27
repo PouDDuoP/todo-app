@@ -73,4 +73,13 @@
   </div>
   <input type="color" [formControl]="colorCtrl">
   <p>color: {{ colorCtrl.value }}</p>
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value"></rect>
+    </g>
+  </svg>
+  <hr>
+  <input type="number" [formControl]="widthCtrl">
+  <input type="number" [formControl]="heightCtrl">
+  <span class="box" [style.width.px]="widthCtrl.value" [style.height.px]="heightCtrl.value"></span>
 </div>

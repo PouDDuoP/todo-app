@@ -82,4 +82,12 @@
   <input type="number" [formControl]="widthCtrl">
   <input type="number" [formControl]="heightCtrl">
   <span class="box" [style.width.px]="widthCtrl.value" [style.height.px]="heightCtrl.value"></span>
+  <hr>
+  <p>
+    <input type="text" [formControl]="nameCtrl"> <br>
+    <span class="message-error" [class.active]="nameCtrl.invalid && nameCtrl.touched">Nombre no valido</span>
+  </p>
+  <p>
+    <input type="text">
+  </p>
 </div>

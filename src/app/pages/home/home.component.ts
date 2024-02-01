@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms'
 
@@ -17,7 +17,7 @@ export class HomeComponent {
     {
       id: Date.now(),
       title: 'Crear Tareas',
-      completed: false
+      completed: true
     },
     {
       id: Date.now(),
@@ -30,7 +30,6 @@ export class HomeComponent {
       completed: false
     },
   ]);
-
   newTaskCtrl = new FormControl('', {
     nonNullable: true,
     validators: [
@@ -39,6 +38,18 @@ export class HomeComponent {
       Validators.maxLength(64),
     ]
 
+  });
+  filter = signal<'all' | 'pending' | 'completed'>('all');
+  tasksByFilter = computed(() => {
+    const filter = this.filter();
+    const tasks = this.tasks();
+    if (filter === 'pending') {
+      return tasks.filter(task => !task.completed);
+    }
+    if (filter === 'completed') {
+      return tasks.filter(task => task.completed);
+    }
+    return tasks
   });
 
   changeHandler() {
@@ -110,4 +121,9 @@ export class HomeComponent {
       });
     });
   }
+
+  changeFilter(filter: 'all' | 'pending' | 'completed') {
+    this.filter.set(filter);
+  }
+
 }

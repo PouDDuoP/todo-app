@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, Injector, computed, effect, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms'
 
@@ -13,23 +13,7 @@ import { Task } from './../../models/task.model'
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  tasks = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: 'Crear Tareas',
-      completed: true
-    },
-    {
-      id: Date.now(),
-      title: 'Crear Componentes',
-      completed: false
-    },
-    {
-      id: Date.now(),
-      title: 'Crear Proyecto',
-      completed: false
-    },
-  ]);
+  tasks = signal<Task[]>([]);
   newTaskCtrl = new FormControl('', {
     nonNullable: true,
     validators: [
@@ -51,6 +35,26 @@ export class HomeComponent {
     }
     return tasks
   });
+
+  injector = inject(Injector);
+
+  ngOnInit() {
+    const storage = localStorage.getItem('tasks');
+    if (storage) {
+      const tasks = JSON.parse(storage);
+      this.tasks.set(tasks);
+    }
+
+    this.trackTasks();
+  }
+
+  trackTasks() {
+    effect(() => {
+      const tasks = this.tasks();
+      console.log(tasks)
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, { injector: this.injector });
+  }
 
   changeHandler() {
     if (this.newTaskCtrl.valid) {

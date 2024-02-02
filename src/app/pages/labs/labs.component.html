@@ -103,4 +103,48 @@
   <p>
     <input type="text">
   </p>
+  <hr>
+  <h2> for new angula 17 </h2>
+  <ul>
+    <p>total: {{ tasks().length }}</p>
+    <li *ngFor="let task of tasks(); index as i;" >
+      {{ i }} {{ task }}
+    </li>
+  </ul>
+  <ul>
+    @for (task of tasks(); track task; let i = $index) {
+      <li> {{ i }} {{ task }} </li>
+    } @empty {
+      <li> <b> No hay tareas en la lista </b> </li>
+    }
+  </ul>
+  <hr>
+  <h2> switch new angula 17 </h2>
+  <input type="text" [value]="person().name" id="" (change)="changeName($event)">
+  <div [ngSwitch]="person().name">
+    <div *ngSwitchCase="'kevin'">Yo soy kevin</div>
+    <div *ngSwitchCase="'poud'">Yo soy poud</div>
+    <div *ngSwitchCase="'genial'">Yo soy genial</div>
+    <div *ngSwitchCase="'tu padre'">Yo soy tu padre</div>
+    <div *ngSwitchDefault>Yo ya estoy</div>
+  </div>
+  <div>
+    @switch (person().name) {
+      @case ('kevin') {
+        <p>Yo soy kevin</p>
+      }
+      @case ('poud') {
+        <p>Yo soy poud</p>
+      }
+      @case ('genial') {
+        <p>Yo soy genial</p>
+      }
+      @case ('tu padre') {
+        <p>Yo soy tu padre</p>
+      }
+      @default {
+        <p>Yo ya estoy</p>
+      }
+    }
+  </div>
 </div>

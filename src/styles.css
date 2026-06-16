@@ -1,10 +1,104 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
 
-@layer base {
-  body {
-    font-family: 'Inter', sans-serif;
-    @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-200;
-  }
+/* ── Base ── */
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  min-height: 100vh;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #2E7D4F;
+  color: white;
+}
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid #2E7D4F;
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+a, button {
+  transition: all 100ms ease-out;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* ── Dark mode ── */
+.dark body {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2a3a5c;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4A7C59;
+}
+
+/* ── Button utility ── */
+.btn-emerald {
+  @apply border-2 border-[#333] bg-[#4A7C59] text-white font-bold;
+  box-shadow: 4px 4px 0px #000;
+  transition: all 100ms ease-out;
+}
+
+.btn-emerald:hover {
+  box-shadow: 6px 6px 0px #000;
+  transform: translate(-2px, -2px);
+}
+
+.btn-emerald:focus-visible {
+  outline: 3px solid #2E7D4F;
+  outline-offset: 2px;
+}
+
+/* ── Animation ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 100ms ease-out;
 }
